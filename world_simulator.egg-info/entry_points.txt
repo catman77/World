@@ -1,0 +1,3 @@
+[console_scripts]
+world-explore = world.exploration:main
+world-sim = world.main:main

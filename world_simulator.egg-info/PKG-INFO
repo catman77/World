@@ -1,0 +1,290 @@
+Metadata-Version: 2.4
+Name: world-simulator
+Version: 0.1.0
+Summary: RSL-based 1D universe simulator with 4D projection
+Author: Research Team
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.20.0
+Requires-Dist: scipy>=1.7.0
+Requires-Dist: numba>=0.55.0
+Requires-Dist: matplotlib>=3.4.0
+Provides-Extra: full
+Requires-Dist: h5py>=3.0.0; extra == "full"
+Requires-Dist: scikit-image>=0.18.0; extra == "full"
+Provides-Extra: dev
+Requires-Dist: pytest>=6.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=2.0.0; extra == "dev"
+Requires-Dist: ipython>=7.0.0; extra == "dev"
+Requires-Dist: jupyter>=1.0.0; extra == "dev"
+Dynamic: author
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# World Simulator
+
+RSL-based 1D universe simulator with projection to 4D observer space.
+
+## Overview
+
+This simulator implements the physics described in the RSL (Recursive Self-Limiting) theory:
+
+- **1D String Universe**: A circular 1D lattice with spin values {-1, 0, +1} and phases θ ∈ [0, 2π)
+- **Evolution Rules**: Local rewriting rules applied left-to-right deterministically
+- **RSL Mechanism**: 
+  - Micro-tension H = J × M (domain wall counting)
+  - Local capacity C_i = C₀ - α × h_i
+  - F1 filter for physical state selection
+- **Omega Cycles**: Topological structures that map to particles
+- **Observer Projection**: Coarse-grained view mapping 1D → 3D+time
+
+## Installation
+
+```bash
+# Clone repository
+cd /path/to/World
+
+# Create virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# or: venv\Scripts\activate  # Windows
+
+# Install package
+pip install -e .
+
+# For full features (HDF5, 3D visualization)
+pip install -e ".[full]"
+
+# For development
+pip install -e ".[dev]"
+```
+
+## Quick Start
+
+### Running a Simulation
+
+```python
+from world.config import SimConfig, RSLConfig, ObserverConfig
+from world.main import run_simulation
+
+# Configure
+sim_config = SimConfig(size=100, max_steps=1000)
+rsl_config = RSLConfig(J=1.0, C0=2.0, alpha=0.5)
+observer_config = ObserverConfig(L_max=3)
+
+# Run
+results = run_simulation(
+    config=sim_config,
+    rsl_config=rsl_config,
+    observer_config=observer_config,
+    experiment_name="my_experiment",
+)
+
+# Access results
+lattice = results['lattice']
+history = results['history']
+analysis = results['analysis']
+```
+
+### Command Line
+
+```bash
+# Basic simulation
+world-sim --size 100 --steps 1000 --visualize
+
+# With custom parameters
+world-sim --size 200 --steps 5000 --J 1.5 --alpha 0.7 --name custom_run
+
+# Parameter exploration
+world-explore --mode params --output ./results
+world-explore --mode rules --output ./rule_results
+```
+
+### Custom Rules
+
+```python
+from world.core import Rule, RuleSet, Lattice, EvolutionEngine
+
+# Create rules
+rules = RuleSet([
+    Rule((1, -1), (-1, 1)),    # Exchange
+    Rule((1, 0), (1, 1)),      # Growth
+    Rule((-1, -1, -1), (0, 0, 0)),  # Annihilation
+])
+
+# Create lattice
+lattice = Lattice.random(100, p_plus=0.5)
+
+# Evolve
+engine = EvolutionEngine(rules, record_history=True)
+engine.run(lattice, steps=1000)
+```
+
+### Analysis
+
+```python
+from world.analysis import (
+    compute_winding_numbers,
+    count_defects,
+    compute_order_parameter,
+    autocorrelation,
+)
+from world.omega import CycleDetector
+
+# Topological analysis
+winding = compute_winding_numbers(lattice)
+defects = count_defects(lattice)
+
+# Statistical analysis
+phi = compute_order_parameter(lattice)
+magnetizations = [s.magnetization() for s in history]
+acf = autocorrelation(magnetizations, max_lag=100)
+
+# Particle detection
+detector = CycleDetector()
+cycles = detector.detect(lattice)
+```
+
+### Visualization
+
+```python
+from world.visualization import (
+    plot_evolution_summary,
+    plot_3d_projection,
+    plot_phase_diagram,
+)
+
+# Evolution summary
+fig = plot_evolution_summary(history)
+fig.savefig("evolution.png")
+
+# 3D projection
+from world.observer import HilbertMapper
+mapper = HilbertMapper(order=3)
+positions = [mapper.to_3d(i) for i in range(len(lattice))]
+plot_3d_projection(positions, lattice.sites)
+```
+
+## Architecture
+
+```
+world/
+├── __init__.py          # Package initialization
+├── config.py            # Configuration dataclasses
+├── main.py              # Main simulation entry point
+├── exploration.py       # Parameter space exploration
+│
+├── core/                # Core simulation components
+│   ├── lattice.py       # Lattice data structure
+│   ├── rules.py         # Rule and RuleSet
+│   └── evolution.py     # Evolution engine
+│
+├── rsl/                 # RSL mechanism
+│   ├── tension.py       # Tension calculations
+│   ├── capacity.py      # Capacity calculations
+│   └── filters.py       # F1 and other filters
+│
+├── omega/               # Omega cycles and particles
+│   ├── cycles.py        # Cycle detection
+│   ├── particles.py     # Particle types
+│   └── charges.py       # SM charge structure
+│
+├── observer/            # Observer projection
+│   ├── observer.py      # Coarse-graining
+│   ├── coordinate_mapper.py  # 1D→3D mapping
+│   ├── interface.py     # Measurement interface
+│   └── amplitude.py     # Wave function
+│
+├── analysis/            # Analysis tools
+│   ├── topology.py      # Topological invariants
+│   ├── statistics.py    # Statistical analysis
+│   ├── metrics.py       # Distance metrics
+│   └── phase_structure.py  # Phase transitions
+│
+├── visualization/       # Visualization
+│   ├── lattice_viz.py   # Lattice plots
+│   ├── timeseries_viz.py  # Time series
+│   ├── projection_3d_viz.py  # 3D views
+│   └── phase_viz.py     # Phase diagrams
+│
+├── storage/             # Data persistence
+│   ├── json_storage.py  # JSON backend
+│   ├── hdf5_storage.py  # HDF5 backend
+│   └── experiment.py    # Experiment management
+│
+└── tests/               # Unit tests
+    ├── test_core.py
+    ├── test_rsl.py
+    ├── test_omega.py
+    ├── test_observer.py
+    └── test_analysis.py
+```
+
+## Key Concepts
+
+### Micro-Tension
+
+$$H_{micro}(S) = J \cdot M$$
+
+where M is the number of domain walls (sites where s_i ≠ s_{i+1}).
+
+### Local Capacity
+
+$$C_i(S) = C_0 - \alpha \cdot h_i(S)$$
+
+where h_i is the local tension at site i.
+
+### F1 Filter
+
+States pass F1 if normalized tension is below threshold:
+
+$$\frac{H_{micro}}{H_{max}} < \Theta_{threshold}$$
+
+### Amplitude
+
+Observer-measured wave function:
+
+$$\psi = \frac{1}{\sqrt{N}} \sum_i e^{i\theta_i}$$
+
+### Winding Number
+
+Topological invariant counting phase windings:
+
+$$W = \frac{1}{2\pi} \sum_i (\theta_{i+1} - \theta_i)_{mod 2\pi}$$
+
+## Research Goals
+
+1. **Find physical rules**: Explore rule space to find configurations producing SM-like physics
+2. **Topological analysis**: Study π₁ invariants and their relation to particle content
+3. **Phase transitions**: Identify critical points and universality classes
+4. **Emergent symmetries**: Look for emergent SU(3)×SU(2)×U(1) structure
+5. **Charge conservation**: Verify charge conservation in omega cycle dynamics
+
+## Testing
+
+```bash
+# Run all tests
+pytest world/tests/ -v
+
+# With coverage
+pytest world/tests/ --cov=world --cov-report=html
+```
+
+## License
+
+MIT License

@@ -19,6 +19,21 @@ from .graph_structure import (
     theoretical_alpha_for_ds,
 )
 from .world import World, WorldConfig, create_world_with_gravity
+from .wormhole import WormholeLayer, WormholeConfig, create_wormhole_layer
+from .omega_cycle import (
+    OmegaCycleConfig, OmegaSignature, OmegaCycleDetector,
+    ResonanceTrigger, create_omega_detector, create_resonance_trigger
+)
+from .antigravity import (
+    AntigravityConfig, ChiField, GeometryInverter, AntigravityLayer,
+    create_antigravity_layer
+)
+from .stone import (
+    TargetType, TargetSpec, StoneConfig, ParameterSpace,
+    WorldEvaluator, EvolutionStrategy, StoneMechanism,
+    make_density_target, make_custom_target,
+    create_stone_for_world
+)
 
 __all__ = [
     "Lattice",
@@ -38,4 +53,32 @@ __all__ = [
     "World",
     "WorldConfig",
     "create_world_with_gravity",
+    # FTL / Wormhole layer
+    "WormholeLayer",
+    "WormholeConfig",
+    "create_wormhole_layer",
+    # Ω-cycle detection & resonance triggers
+    "OmegaCycleConfig",
+    "OmegaSignature", 
+    "OmegaCycleDetector",
+    "ResonanceTrigger",
+    "create_omega_detector",
+    "create_resonance_trigger",
+    # Antigravity (χ-field & geometry inversion)
+    "AntigravityConfig",
+    "ChiField",
+    "GeometryInverter",
+    "AntigravityLayer",
+    "create_antigravity_layer",
+    # Stone mechanism (probability control via Evolution Strategy)
+    "TargetType",
+    "TargetSpec",
+    "StoneConfig",
+    "ParameterSpace",
+    "WorldEvaluator",
+    "EvolutionStrategy",
+    "StoneMechanism",
+    "make_density_target",
+    "make_custom_target",
+    "create_stone_for_world",
 ]

@@ -1,0 +1,26 @@
+{
+  "experiment": "A",
+  "version": "4.0",
+  "date": "2025-12-19T08:56:58.679325",
+  "hit": true,
+  "score": 0.6626262271152071,
+  "metrics": {
+    "f_good": 0.543859649122807,
+    "chi2_median": 4.383720286143104,
+    "sigma_rar": 0.19431473386397774,
+    "E_mu": 0.029346760447438214
+  },
+  "a0_sparc": 1.05e-10,
+  "sigma_rar_with_error": "0.1943 \u00b1 0.0048",
+  "E_mu_mond": 0.029346760447438214,
+  "is_robust": true,
+  "graph_origin_valid": true,
+  "red_flags_status": "FIXED",
+  "v4_fixes": {
+    "score_mapping_fixed": true,
+    "binning_contract_added": true,
+    "bootstrap_is_diagnostic": true,
+    "a0_scatter_decomposed": true,
+    "D_surf_validation_extended": true
+  }
+}

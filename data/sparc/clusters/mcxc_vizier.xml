@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VOTABLE version="1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
+  xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/v1.3">
+ <DESCRIPTION>
+   VizieR Astronomical Server vizier.cds.unistra.fr
+    Date: 2025-12-18T23:06:57 [V7.5.3]
+   Explanations and Statistics of UCDs:			See LINK below
+   In case of problem, please report to:	cds-question@unistra.fr
+ </DESCRIPTION>
+<!-- VOTable description at http://www.ivoa.net/Documents/latest/VOT.html -->
+<INFO name="service_protocol" value="ivo://ivoa.net/std/ConeSearch/v1.03">  IVOID of the protocol through which the data was retrieved</INFO>
+<INFO name="request_date" value="2025-12-18T23:06:57">  Query execution date</INFO>
+<INFO name="request" value="https://vizier.cds.unistra.fr/viz-bin/votable/-A?-source=J/A%2BA/534/A109/mcxc&amp;-out.max=unlimited&amp;-out=MCXC,z,L500,M500,R500">  Full request URL</INFO>
+<INFO name="contact" value="cds-question@unistra.fr">  Email or URL to contact publisher</INFO>
+<INFO name="server_software" value="7.5.3">  Software version</INFO>
+<INFO name="publisher" value="CDS">  Data centre that produced the VOTable</INFO>
+<INFO ID="Error" name="Error" value="Missing RA; Missing DEC; Missing SR"/>
+<RESOURCE>
+</RESOURCE>
+</VOTABLE>

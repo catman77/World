@@ -11,6 +11,10 @@ h5py>=3.0.0
 # Visualization
 matplotlib>=3.4.0
 
+# Astronomy
+astropy>=5.0.0
+astroquery>=0.4.0
+
 # Image processing (optional, for isosurfaces)
 scikit-image>=0.18.0
 

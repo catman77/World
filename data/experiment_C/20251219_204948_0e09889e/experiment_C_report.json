@@ -1,0 +1,297 @@
+{
+  "experiment": "C",
+  "title": "FTL/Antigravity as Contextual Geometry Modes",
+  "created_at": "2025-12-19T20:49:48.410770",
+  "run_id": "0e09889e",
+  "versions": {
+    "schema_version": "C-1.0.0",
+    "report_version": "v1",
+    "code_commit": "0f04eb8",
+    "code_dirty": false,
+    "python": "3.14.2",
+    "numpy": "2.3.5",
+    "scipy": "unknown",
+    "platform": "Linux-6.17.9-arch1-1-x86_64-with-glibc2.42"
+  },
+  "rng": {
+    "base_seed": 42,
+    "seeds": {
+      "world": 42,
+      "pairs_eval": 142,
+      "sweep_rt": 242,
+      "sweep_cap": 342,
+      "sweep_mhd": 442,
+      "Q_trace": 1042
+    }
+  },
+  "parameters": {
+    "N": 512,
+    "alpha": 2.0,
+    "L": 3,
+    "wormhole": {
+      "resonance_threshold": 0.0,
+      "min_hop_distance": 30,
+      "max_wormholes": 10,
+      "pattern_window": 5,
+      "selection": "topk_by_resonance"
+    },
+    "n_pairs_eval": 299,
+    "sweep_config": {
+      "resonance_threshold": [
+        0.0,
+        0.2,
+        0.4,
+        0.6,
+        0.8,
+        0.95
+      ],
+      "capacity": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        30
+      ],
+      "min_hop_distance": [
+        5,
+        15,
+        30,
+        50,
+        80,
+        120
+      ]
+    }
+  },
+  "world_stats": {
+    "N": 512,
+    "n_edges": 813,
+    "avg_degree": 3.17578125,
+    "mean_edge_length": 0.030740886552799152
+  },
+  "tests": {
+    "test4_causality": {
+      "passed": true,
+      "checks": {
+        "4.1_s_local_window_L": true,
+        "4.2_phi_laplacian_neighbors": true,
+        "4.3_H_depends_on_current_state": true,
+        "4.4_no_backward_time_edges": true
+      }
+    },
+    "test5_determinism": {
+      "passed": true,
+      "runA_state_hash": "103618bd35d935d7",
+      "runB_state_hash": "103618bd35d935d7",
+      "seed_used": 42,
+      "hash_components": [
+        "s.tobytes()",
+        "phi.tobytes()",
+        "Q",
+        "n_edges",
+        "active_wh",
+        "capacity"
+      ]
+    },
+    "test6_Q_conservation": {
+      "passed": true,
+      "Q0": 0,
+      "Q_final": 0,
+      "Q_min": 0,
+      "Q_max": 0,
+      "all_equal": true
+    }
+  },
+  "hypotheses": {
+    "H1_path_shortening": {
+      "confirmed": false,
+      "frac_shortened": 0.6321070234113713,
+      "ftl_ratio_p95": 0,
+      "mean_ftl_ratio": 0,
+      "max_ftl_ratio": 0,
+      "target_spec": {
+        "p95_ftl_factor_min": 1.5,
+        "frac_shortened_min": 0.05,
+        "mean_ftl_factor_min": 1.0
+      }
+    },
+    "H2_controllability": {
+      "confirmed": true,
+      "monotonic_tests": {
+        "resonance_threshold": {
+          "rho": -0.6546536707079772,
+          "p_value": 0.15830242337545783,
+          "expected_sign": "negative",
+          "passed": true
+        },
+        "capacity": {
+          "rho": 0.8451542547285166,
+          "p_value": 0.034109423167409635,
+          "expected_sign": "positive",
+          "passed": true
+        },
+        "min_hop_distance": {
+          "rho": -0.6546536707079772,
+          "p_value": 0.15830242337545783,
+          "expected_sign": "negative_or_zero",
+          "passed": true,
+          "note": null
+        }
+      }
+    },
+    "H3_baseline_compatibility": {
+      "confirmed": true,
+      "tests_passed": 4,
+      "tests_total": 4,
+      "active_wormholes_baseline": 0
+    },
+    "H4_bimodality": {
+      "confirmed": true,
+      "test": "gmm_bic",
+      "gmm_bic_1": 2374.464663172609,
+      "gmm_bic_2": 476.64303166722465,
+      "delta_bic": 1897.8216315053844,
+      "ks_pvalue": 1.6158664324796913e-36,
+      "pct_shortened": 63.21070234113712
+    }
+  },
+  "statistical_analysis": {
+    "n_samples": 299,
+    "baseline_mean": 45.47157190635451,
+    "baseline_std": 25.72939370068202,
+    "ftl_mean": 21.441471571906355,
+    "ftl_std": 10.570629745624974,
+    "mean_reduction": 24.030100334448157,
+    "n_shortened": 189,
+    "pct_shortened": 63.21070234113712,
+    "ks_statistic": 0.5150501672240803,
+    "ks_pvalue": 1.6158664324796913e-36,
+    "gmm_bic_1": 2374.464663172609,
+    "gmm_bic_2": 476.64303166722465,
+    "delta_bic": 1897.8216315053844,
+    "gmm_bimodal": true,
+    "h4_confirmed": true
+  },
+  "target_spec": {
+    "hit": false,
+    "score": 0.8571428571428571,
+    "thresholds": {
+      "H1_frac_shortened_min": 0.05,
+      "H1_ftl_ratio_p95_min": 1.5,
+      "H2_rho_threshold": 0.5,
+      "H4_delta_bic_min": 10.0,
+      "Q_variation_max": 10
+    },
+    "gating_metrics": [
+      "test4_causality",
+      "test5_determinism",
+      "test6_Q_conservation",
+      "H1_path_shortening",
+      "H2_controllability",
+      "H3_baseline",
+      "H4_bimodality"
+    ],
+    "recompute_contract": {
+      "H1_frac_shortened": {
+        "table": "tables/pairs_eval.parquet",
+        "columns_needed": [
+          "delta_d",
+          "min_hop_ok"
+        ],
+        "formula": "mean(delta_d > 0 for min_hop_ok == True)",
+        "threshold": 0.05
+      },
+      "H1_ftl_ratio_p95": {
+        "table": "tables/pairs_eval.parquet",
+        "columns_needed": [
+          "ftl_ratio",
+          "active"
+        ],
+        "formula": "quantile(ftl_ratio, 0.95) over (active == True)",
+        "threshold": 1.5
+      },
+      "H2_monotonicity_rt": {
+        "table": "tables/control_sweep.parquet",
+        "columns_needed": [
+          "resonance_threshold",
+          "n_wormholes",
+          "sweep_var"
+        ],
+        "formula": "spearmanr(resonance_threshold, n_wormholes) where sweep_var == 'resonance_threshold'",
+        "expected_sign": "negative",
+        "threshold_rho": -0.5
+      },
+      "H2_monotonicity_cap": {
+        "table": "tables/control_sweep.parquet",
+        "columns_needed": [
+          "capacity",
+          "n_wormholes",
+          "sweep_var"
+        ],
+        "formula": "spearmanr(capacity, n_wormholes) where sweep_var == 'capacity'",
+        "expected_sign": "positive",
+        "threshold_rho": 0.5
+      },
+      "H4_bimodality": {
+        "table": "tables/pairs_eval.parquet",
+        "columns_needed": [
+          "delta_d"
+        ],
+        "formula": "GMM(n=1).BIC - GMM(n=2).BIC on delta_d",
+        "threshold": 10.0
+      },
+      "Test6_Q_conservation": {
+        "table": "tables/Q_trace.csv",
+        "columns_needed": [
+          "Q"
+        ],
+        "formula": "max(Q) - min(Q)",
+        "threshold": 10
+      }
+    }
+  },
+  "artifacts_manifest": {
+    "base_dir": "/home/catman/Yandex.Disk/cuckoo/z/reals/libs/Experiments/Space/World/data/experiment_C/20251219_204948_0e09889e",
+    "files": [
+      {
+        "name": "tables/pairs_eval.parquet",
+        "role": "ci_metric_input",
+        "sha256": "d326d30f6cf4a35b75193e33a5c102f0f98a4b10eadbc4069420ab0c83ac277d",
+        "n_rows": 299,
+        "format": "parquet"
+      },
+      {
+        "name": "tables/control_sweep.parquet",
+        "role": "ci_metric_input",
+        "sha256": "c3583f70f6ad633871bbe00cefc411d89a585e60548bedf3da8cdbac45ff4b1f",
+        "n_rows": 18,
+        "format": "parquet"
+      },
+      {
+        "name": "tables/Q_trace.csv",
+        "role": "ci_metric_input",
+        "sha256": "3d735857f259200c759722606c4aea2a6897ed0a14932b3b3325f527a06ee5ba",
+        "n_rows": 11,
+        "format": "csv"
+      },
+      {
+        "name": "ftl_demonstration.png",
+        "role": "plot",
+        "sha256": "323c9bf53407bd8343f7b56ff3fe84fce00cd5642fb6463c526b5addaa42767a",
+        "format": "png"
+      },
+      {
+        "name": "path_distribution_analysis.png",
+        "role": "plot",
+        "sha256": "727545aae68f2c6b449fc0df38a9d2a7c76437adf8d5f96423b19c224fe513d4",
+        "format": "png"
+      },
+      {
+        "name": "control_sweep_monotonicity.png",
+        "role": "plot",
+        "sha256": "7e3b5d42ce9bba06d0dda2dfe0f3bd6ded53c3a537c234cedfdc7ddd13c5acd9",
+        "format": "png"
+      }
+    ]
+  }
+}

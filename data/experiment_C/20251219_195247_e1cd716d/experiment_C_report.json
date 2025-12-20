@@ -1,0 +1,26 @@
+{
+  "experiment": "C",
+  "title": "FTL/Antigravity as Contextual Geometry Modes",
+  "timestamp": "20251219_195247",
+  "run_id": "e1cd716d",
+  "rsl_parameters": {
+    "N": 512,
+    "alpha": 2.0,
+    "L": 3,
+    "seed": 42
+  },
+  "wormhole_parameters": {
+    "resonance_threshold": 0.0,
+    "min_hop_distance": 30,
+    "max_wormholes": 10,
+    "pattern_window": 5
+  },
+  "world_stats": {
+    "N": 512,
+    "n_edges": 813,
+    "avg_degree": 3.17578125,
+    "mean_edge_length": 0.030740886552799152
+  },
+  "hypothesis_results": {
+    "H1_path_shortening": {
+      "confirmed": 

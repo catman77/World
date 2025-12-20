@@ -1,0 +1,210 @@
+{
+  "experiment": "D",
+  "name": "Antigravity via \u03c7-field",
+  "version": "1.0.0",
+  "run_id": "20251220_054152_0f04eb87",
+  "timestamp": "2025-12-20T05:42:41.617286",
+  "git_info": {
+    "commit": "0f04eb87",
+    "dirty": false
+  },
+  "parameters": {
+    "N": 512,
+    "alpha": 2.0,
+    "L": 3,
+    "seed": 42,
+    "d_min": 5,
+    "d_max": 50,
+    "eta_default": 0.5,
+    "eta_values": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "chi_strength": 30.0,
+    "mass": -10.0
+  },
+  "thresholds": {
+    "h1_inv_rate_min": 0.5,
+    "h2_spearman_rho_min": 0.5,
+    "h2_spearman_p_max": 0.05,
+    "h3_baseline_max": 1e-09,
+    "h4_spearman_rho_max": -0.3,
+    "h4_spearman_p_max": 0.05,
+    "test7_residual_max": 1e-06,
+    "test8_max_diff": 1e-12,
+    "test9_max_diff": 1e-10
+  },
+  "hypotheses": {
+    "H1": {
+      "name": "\u0418\u043d\u0432\u0435\u0440\u0441\u0438\u044f \u0441\u0438\u043b\u044b \u0442\u044f\u0433\u043e\u0442\u0435\u043d\u0438\u044f",
+      "confirmed": true,
+      "score": 1.0,
+      "metrics": {
+        "inv_rate": 1.0,
+        "inv_count": 264,
+        "total_nodes": 264,
+        "threshold": 0.5,
+        "d_range": "5..50"
+      }
+    },
+    "H2": {
+      "name": "\u041c\u043e\u043d\u043e\u0442\u043e\u043d\u043d\u043e\u0441\u0442\u044c \u043f\u043e \u03b7 (Spearman)",
+      "confirmed": "True",
+      "score": 1.0,
+      "metrics": {
+        "spearman_rho": 0.8660254037844386,
+        "spearman_p": 0.002535996080258108,
+        "threshold_rho_min": 0.5,
+        "threshold_p_max": 0.05
+      }
+    },
+    "H3": {
+      "name": "Baseline \u043f\u0440\u0438 \u03b7=0",
+      "confirmed": true,
+      "score": 1.0,
+      "metrics": {
+        "max_abs_diff": 0.0,
+        "threshold": 1e-09,
+        "test_nodes": 264,
+        "d_range": "5..50"
+      }
+    },
+    "H4": {
+      "name": "\u041f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0435\u043d\u043d\u0430\u044f \u043b\u043e\u043a\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c (Spearman)",
+      "confirmed": "True",
+      "score": 1.0,
+      "metrics": {
+        "spearman_rho": -0.3672317366874929,
+        "spearman_p": 7.5132155230461e-10,
+        "chi_correlation_rho": -0.9925425947166907,
+        "near_far_ratio": 1.050964138415947,
+        "threshold_rho_max": -0.3,
+        "threshold_p_max": 0.05
+      }
+    }
+  },
+  "tests": {
+    "Test7": {
+      "passed": true,
+      "name": "\u03c7 Laplacian equation (regularized)",
+      "metrics": {
+        "residual_ratio": 8.579857483539543e-09,
+        "residual_norm": 2.5739572450704426e-07,
+        "rho_norm": 30.0,
+        "reg_lambda": 1e-06,
+        "chi_norm": 678833053.4512762,
+        "threshold": 1e-06
+      }
+    },
+    "Test8": {
+      "passed": true,
+      "name": "Determinism",
+      "metrics": {
+        "max_abs_diff": 0.0,
+        "chi1_hash": "b167dc8fbc6e35cc",
+        "chi2_hash": "b167dc8fbc6e35cc",
+        "threshold": 1e-12
+      }
+    },
+    "Test9": {
+      "passed": true,
+      "name": "Baseline compatibility (empty)",
+      "metrics": {
+        "max_abs_diff": 0.0,
+        "threshold": 1e-10,
+        "note": "No \u03c7 sources"
+      }
+    }
+  },
+  "summary": {
+    "hypotheses_confirmed": 4,
+    "hypotheses_total": 4,
+    "tests_passed": 3,
+    "tests_total": 3,
+    "final_score": 1.0,
+    "status": "PASS"
+  },
+  "recompute_contract": {
+    "description": "Formulas to recompute all metrics from raw tables",
+    "metrics": {
+      "H1_inv_rate": {
+        "table": "forces.parquet",
+        "filter": "d_hops >= 5 AND d_hops <= 50",
+        "formula": "COUNT(inverted=True) / COUNT(*)",
+        "threshold": ">= 0.5"
+      },
+      "H2_spearman": {
+        "table": "h2_sweep.parquet",
+        "group_by": "eta",
+        "agg": "AVG(inverted) as inv_rate",
+        "formula": "scipy.stats.spearmanr(eta_values, inv_rates)",
+        "threshold": "rho >= 0.5, p <= 0.05"
+      },
+      "H3_baseline": {
+        "table": "forces.parquet",
+        "note": "Computed separately with eta=0",
+        "formula": "MAX(ABS(F_eff - F_normal)) for nodes in d_min..d_max",
+        "threshold": "< 1e-09"
+      },
+      "H4_locality": {
+        "table": "forces.parquet",
+        "formula": "scipy.stats.spearmanr(d_hops, ABS(deltaF))",
+        "threshold": "rho <= -0.3, p <= 0.05"
+      },
+      "Test7_residual": {
+        "table": "test7_residuals.csv",
+        "formula": "residual_ratio = ||L_reg\u00b7\u03c7 - \u03c1_\u03c7|| / ||\u03c1_\u03c7||",
+        "threshold": "< 1e-06"
+      },
+      "Test8_determinism": {
+        "table": "test8_determinism.csv",
+        "formula": "max_abs_diff = MAX(ABS(\u03c71 - \u03c72))",
+        "threshold": "< 1e-12"
+      },
+      "Test9_baseline": {
+        "table": "test9_baseline.csv",
+        "formula": "max_abs_diff = MAX(ABS(\u03a6_eff - \u03c6)) with no \u03c7 sources",
+        "threshold": "< 1e-10"
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "filename": "forces.parquet",
+      "relative_path": "tables/forces.parquet",
+      "sha256": "b8f87aeeb481ee5487f6967f001ea1876eab39789e230afa2c00adbc783632ff",
+      "size_bytes": 36793
+    },
+    {
+      "filename": "h2_sweep.parquet",
+      "relative_path": "tables/h2_sweep.parquet",
+      "sha256": "b9d36b6012499c00afaf4cd95640b6ec2cc4baa29184e579de272cd09a100e42",
+      "size_bytes": 52861
+    },
+    {
+      "filename": "test7_residuals.csv",
+      "relative_path": "tables/test7_residuals.csv",
+      "sha256": "9eabf183b5368f01241638a1da9fba951f434a12826327c49103ed63c3f32518",
+      "size_bytes": 148
+    },
+    {
+      "filename": "test8_determinism.csv",
+      "relative_path": "tables/test8_determinism.csv",
+      "sha256": "f9d088f358ebd343cae1a1d2747666fe6e55811982b7bafe978aca96e6c7cb75",
+      "size_bytes": 87
+    },
+    {
+      "filename": "test9_baseline.csv",
+      "relative_path": "tables/test9_baseline.csv",
+      "sha256": "13ce769c0d237c4dbbd7ebfe450e324b1c04b0d9437ef9273591deff730ceb23",
+      "size_bytes": 52
+    }
+  ]
+}

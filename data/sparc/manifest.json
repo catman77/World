@@ -1,0 +1,21 @@
+{
+  "run_dir": "../data/sparc",
+  "created_at": "2025-12-19T18:52:36.318026",
+  "artifacts": [
+    {
+      "path": "tables/V_grid.parquet",
+      "sha256": "be439c1bba24865e54be76e98fb4f80991c0eba48f5615fa0b743864c54eeff6",
+      "kind": "parquet"
+    },
+    {
+      "path": "tables/V_summary.parquet",
+      "sha256": "76b1443e66a54230f5ea7049c8aaed5f98bc2a0750ed3b8cde711d602cafee5a",
+      "kind": "parquet"
+    },
+    {
+      "path": "experiment_B_report_v2.json",
+      "sha256": "737e38bab5a4b48be9a749d6c0e6b8cfe73554cc1591a3efebf5358bee922cff",
+      "kind": "json"
+    }
+  ]
+}

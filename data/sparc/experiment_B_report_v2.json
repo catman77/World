@@ -1,0 +1,168 @@
+{
+  "experiment": "B",
+  "title": "Границы квантовой когерентности как информационный эффект",
+  "created_at": "2025-12-19T18:52:36.303529",
+  "versions": {
+    "schema_version": "B-1.0.0",
+    "code_commit": "0f04eb87",
+    "code_dirty": true,
+    "python": "3.14.2",
+    "numpy": "2.3.5",
+    "platform": "Linux-6.17.9-arch1-1-x86_64-with-glibc2.42"
+  },
+  "rng": {
+    "base_seed": 42,
+    "n_runs_per_point": 10,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ]
+  },
+  "parameters": {
+    "N_values": [
+      64,
+      128,
+      256,
+      384,
+      512,
+      640,
+      768,
+      896,
+      1024,
+      1280,
+      1536,
+      2048
+    ],
+    "eta_values": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "T": 150,
+    "f_meas": 0.3,
+    "gamma": 2.0,
+    "N_star_model": 512
+  },
+  "threshold_estimate": {
+    "method": "logistic_fit",
+    "N_star_hat": 599.4724218356162,
+    "N_star_ci_low": 587.6667061483978,
+    "N_star_ci_high": 611.2781375228345,
+    "width": 34.74807554535902,
+    "r_squared": 0.9979632171694474,
+    "fit_success": true,
+    "agreement_with_model": true,
+    "tolerance": 200
+  },
+  "hypothesis_tests": {
+    "H1_phase_saturation": {
+      "confirmed": true,
+      "statistic": {
+        "drop_ratio": 0.17969543158676074,
+        "V_mean_below": 0.9028342576954752,
+        "V_mean_above": 0.16223519158790117,
+        "n_below": 300,
+        "n_above": 420
+      },
+      "ci95": {
+        "drop_ratio_low": 0.14833318696034478,
+        "drop_ratio_high": 0.2116206320095497
+      },
+      "threshold": 0.5,
+      "notes": "Bootstrap 95% CI: [0.1483, 0.2116]"
+    },
+    "H2_eta_dependence": {
+      "confirmed": true,
+      "statistic": {
+        "slope": -0.1913246602155004
+      },
+      "ci95": {
+        "slope_low": -0.22077695517419735,
+        "slope_high": -0.16824217782009418
+      },
+      "threshold": -0.05,
+      "notes": "Slope = -0.1913, 95% CI: [-0.2208, -0.1682]"
+    },
+    "H3_informational_nature": {
+      "confirmed": true,
+      "statistic": {
+        "cohens_d": 28.28170108853066,
+        "V_mean_eta0_all": 0.8433960263055892,
+        "V_min_eta0": 0.7405957118655861,
+        "V_mean_eta0_highN": 0.800940146741385,
+        "V_mean_eta1_highN": 0.007446254723246538
+      },
+      "ci95": {
+        "cohens_d_low": 25.12776609681923,
+        "cohens_d_high": 33.096623182957316
+      },
+      "thresholds": {
+        "d_min": 1.5,
+        "V_min": 0.7
+      },
+      "sub_tests": {
+        "H3a_effect_size": true,
+        "H3b_coherence_preserved": "True"
+      },
+      "notes": "Cohen's d = 28.28, CI: [25.13, 33.10]; V(η=0)_min = 0.741"
+    }
+  },
+  "derived_metrics": {
+    "drop_ratio": 0.17969543158676074,
+    "eta_slope": -0.1913246602155004,
+    "cohens_d": 28.28170108853066,
+    "max_complementarity_violation": 0.0
+  },
+  "target_spec": {
+    "hit": true,
+    "score": 1.0,
+    "thresholds": {
+      "drop_ratio_max": 0.5,
+      "eta_slope_max": -0.05,
+      "cohens_d_min": 1.5,
+      "N_star_tolerance": 200
+    },
+    "gating_metrics": [
+      "H1_drop_ratio",
+      "H2_eta_slope",
+      "H3_cohens_d",
+      "N_star_agreement"
+    ],
+    "recompute_contract": {
+      "H1_drop_ratio": {
+        "table": "tables/V_grid.parquet",
+        "formula": "mean(V | N > N_star_hat) / mean(V | N <= N_star_hat)"
+      },
+      "H2_eta_slope": {
+        "table": "tables/V_summary.parquet",
+        "formula": "OLS slope of V_demeaned ~ eta for N > N_star_hat"
+      },
+      "H3_cohens_d": {
+        "table": "tables/V_grid.parquet",
+        "formula": "Cohen's d between V(eta=0) and V(eta=1) for N > N_star_hat"
+      }
+    }
+  },
+  "conclusions": {
+    "main_result": "Phase saturation подтверждён: drop_ratio = 0.1797",
+    "N_star_from_data": "N*_hat = 599 (модель: 512)",
+    "agreement": "Согласие с моделью: ДА (±200)"
+  },
+  "physical_interpretation": {
+    "rsl_hierarchy": "N*_model = 512 — размер базовой 1D-ячейки в RSL",
+    "phase_loss": "Фаза теряется при переходе между уровнями иерархии",
+    "measurement_role": "Π_meas операция извлекает which-path информацию",
+    "complementarity": "V² + D² ≤ 1: max violation = 0.000000"
+  }
+}

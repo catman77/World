@@ -1,0 +1,124 @@
+{
+  "experiment": "C",
+  "title": "FTL/Antigravity as Contextual Geometry Modes",
+  "timestamp": "20251219_195331",
+  "run_id": "85615a8a",
+  "rsl_parameters": {
+    "N": 512,
+    "alpha": 2.0,
+    "L": 3,
+    "seed": 42
+  },
+  "wormhole_parameters": {
+    "resonance_threshold": 0.0,
+    "min_hop_distance": 30,
+    "max_wormholes": 10,
+    "pattern_window": 5
+  },
+  "world_stats": {
+    "N": 512,
+    "n_edges": 813,
+    "avg_degree": 3.17578125,
+    "mean_edge_length": 0.030740886552799152
+  },
+  "hypothesis_results": {
+    "H1_path_shortening": {
+      "confirmed": true,
+      "avg_ftl_factor": 61.4,
+      "max_ftl_factor": 75.0,
+      "description": "FTL реализуется как path-shortening через wormhole-рёбра"
+    },
+    "H2_controllability": {
+      "confirmed": true,
+      "mechanism": "resonance + capacity + min_distance",
+      "description": "Эффект контролируется через резонанс Ω-сигнатур и ресурс"
+    },
+    "H3_baseline_compatibility": {
+      "confirmed": true,
+      "tests_passed": 4,
+      "tests_total": 4,
+      "description": "При H(t)=∅ физика редуцируется к стандартной"
+    },
+    "H4_bimodal_distribution": {
+      "confirmed": true,
+      "pct_shortened": 63.31658291457286,
+      "mean_reduction": 24.396984924623116,
+      "description": "Бимодальное распределение длин путей"
+    }
+  },
+  "statistical_analysis": {
+    "n_samples": 200,
+    "baseline_mean": 46.688442211055275,
+    "baseline_std": 24.9764394927319,
+    "ftl_mean": 22.29145728643216,
+    "ftl_std": 10.42105895461746,
+    "mean_reduction": 24.396984924623116,
+    "n_shortened": 126,
+    "pct_shortened": 63.31658291457286,
+    "ks_statistic": 0.5226130653266332,
+    "ks_pvalue": 3.5713199224132223e-25,
+    "h4_confirmed": true
+  },
+  "ftl_results": [
+    {
+      "pair": [
+        112,
+        317
+      ],
+      "resonance": 0.6900655593423543,
+      "base_dist": 70,
+      "new_dist": 1,
+      "ftl_factor": 70.0
+    },
+    {
+      "pair": [
+        105,
+        259
+      ],
+      "resonance": 0.670820393249937,
+      "base_dist": 57,
+      "new_dist": 1,
+      "ftl_factor": 57.0
+    },
+    {
+      "pair": [
+        348,
+        270
+      ],
+      "resonance": 0.6708203932499367,
+      "base_dist": 30,
+      "new_dist": 1,
+      "ftl_factor": 30.0
+    },
+    {
+      "pair": [
+        190,
+        401
+      ],
+      "resonance": 0.6708203932499366,
+      "base_dist": 75,
+      "new_dist": 1,
+      "ftl_factor": 75.0
+    },
+    {
+      "pair": [
+        480,
+        263
+      ],
+      "resonance": 0.6708203932499366,
+      "base_dist": 75,
+      "new_dist": 1,
+      "ftl_factor": 75.0
+    }
+  ],
+  "summary": {
+    "hypotheses_confirmed": 4,
+    "hypotheses_total": 4,
+    "overall_score": 1.0,
+    "verdict": "PASS"
+  },
+  "artifacts": {
+    "ftl_demonstration_plot": "ftl_demonstration.png",
+    "path_distribution_plot": "path_distribution_analysis.png"
+  }
+}

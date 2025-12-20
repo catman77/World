@@ -1,0 +1,112 @@
+{
+  "experiment": "C",
+  "title": "FTL/Antigravity as Contextual Geometry Modes",
+  "created_at": "2025-12-19T20:28:42.616425",
+  "run_id": "deaf8270",
+  "versions": {
+    "schema_version": "C-1.0.0",
+    "report_version": "v1",
+    "code_commit": "0f04eb8",
+    "code_dirty": false,
+    "python": "3.14.2",
+    "numpy": "2.3.5",
+    "scipy": "unknown",
+    "platform": "Linux-6.17.9-arch1-1-x86_64-with-glibc2.42"
+  },
+  "rng": {
+    "base_seed": 42,
+    "seeds": {
+      "world": 42,
+      "pairs_eval": 142,
+      "sweep_rt": 242,
+      "sweep_cap": 342,
+      "sweep_mhd": 442,
+      "Q_trace": 1042
+    }
+  },
+  "parameters": {
+    "N": 512,
+    "alpha": 2.0,
+    "L": 3,
+    "wormhole": {
+      "resonance_threshold": 0.0,
+      "min_hop_distance": 30,
+      "max_wormholes": 10,
+      "pattern_window": 5,
+      "selection": "topk_by_resonance"
+    },
+    "n_pairs_eval": 299,
+    "sweep_config": {
+      "resonance_threshold": [
+        0.0,
+        0.2,
+        0.4,
+        0.6,
+        0.8,
+        0.95
+      ],
+      "capacity": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        30
+      ],
+      "min_hop_distance": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        70
+      ]
+    }
+  },
+  "world_stats": {
+    "N": 512,
+    "n_edges": 813,
+    "avg_degree": 3.17578125,
+    "mean_edge_length": 0.030740886552799152
+  },
+  "tests": {
+    "test4_causality": {
+      "passed": true,
+      "checks": {
+        "s_local_window": true,
+        "phi_neighbor_only": true,
+        "H_depends_on_current_only": true,
+        "no_back_edges": true
+      }
+    },
+    "test5_determinism": {
+      "passed": true,
+      "runA_state_hash": "103618bd35d935d7",
+      "runB_state_hash": "103618bd35d935d7",
+      "seed_used": 42
+    },
+    "test6_Q_conservation": {
+      "passed": false,
+      "Q0": 428,
+      "Q_min": 0,
+      "Q_max": 428,
+      "variations": 428
+    }
+  },
+  "hypotheses": {
+    "H1_path_shortening": {
+      "confirmed": true,
+      "frac_shortened": 0.6321070234113713,
+      "ftl_ratio_p95": 75.0,
+      "mean_ftl_ratio": 61.4,
+      "max_ftl_ratio": 75.0,
+      "threshold": 1.5
+    },
+    "H2_controllability": {
+      "confirmed": false,
+      "monotonic_tests": {
+        "resonance_threshold": {
+          "rho": -0.6546536707079772,
+          "p_value": 0.15830242337545783,
+          "expected_sign": "negative",
+          "passed": 

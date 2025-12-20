@@ -1,0 +1,339 @@
+{
+  "experiment": "B",
+  "title": "Границы квантовой когерентности как информационный эффект",
+  "created_at": "2025-12-19T19:05:03.990653",
+  "run_id": "efa4409a",
+  "versions": {
+    "schema_version": "B-2.0.0",
+    "code_commit": "0f04eb87",
+    "code_dirty": true,
+    "python": "3.14.2",
+    "numpy": "2.3.5",
+    "platform": "Linux-6.17.9-arch1-1-x86_64-with-glibc2.42"
+  },
+  "rng": {
+    "base_seed": 42,
+    "n_runs_per_point": 10,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ]
+  },
+  "parameters": {
+    "N_values": [
+      64,
+      128,
+      256,
+      384,
+      512,
+      640,
+      768,
+      896,
+      1024,
+      1280,
+      1536,
+      2048
+    ],
+    "eta_values": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "T": 150,
+    "f_meas": 0.3,
+    "gamma": 2.0,
+    "N_star_model": 512,
+    "visibility_spec": {
+      "definition": "V = (I_max - I_min) / (I_max + I_min)",
+      "description": "Интерференционная видимость как контраст интерференционной картины",
+      "model_implementation": {
+        "method": "state_tracking",
+        "formula": "V(t) = V(0) · prod_{i=1}^{n_meas}(1 - η·(1 - f_sat(N))) · prod_{t}(1 - ε_bg)",
+        "V_initial": 1.0,
+        "measurement_decay": "1 - η·(1 - f_sat(N)) per measurement event",
+        "background_decay": "ε_bg = 0.001 · sqrt(N/N*) per timestep"
+      },
+      "alternative_definition": "|ρ_01| / sqrt(ρ_00 · ρ_11) for density matrix (equivalent for pure states)",
+      "phase_scan": {
+        "method": "not_applicable",
+        "reason": "V computed from internal state evolution, not from I(φ) scan"
+      },
+      "notes": "В данной модели V отслеживается напрямую как амплитуда когерентности, а не извлекается из сканирования интерференционной картины."
+    },
+    "distinguishability_spec": {
+      "definition": "D = |P_1 - P_2| где P_i - вероятность обнаружения частицы на пути i",
+      "description": "Различимость путей (which-path information)",
+      "model_implementation": {
+        "method": "state_tracking",
+        "formula": "D_new = sqrt(D^2 + Δ^2), где Δ = η·(1-f_sat)·(1-D)",
+        "D_initial": 0.0,
+        "growth_mechanism": "D растёт при каждом измерении пропорционально силе измерения η и насыщению (1 - f_sat)"
+      },
+      "complementarity_relation": "V^2 + D^2 ≤ 1 (Englert inequality)",
+      "notes": "D вычисляется параллельно с V для проверки дополнительности."
+    }
+  },
+  "threshold_estimate": {
+    "method": "logistic_fit",
+    "description": "V(N) = V_min + (V_max - V_min) / (1 + exp((N - N*) / w)), маргинализация по η",
+    "N_star_hat": 599.4724218356162,
+    "N_star_ci_low": 587.6667061483978,
+    "N_star_ci_high": 611.2781375228345,
+    "width": 34.74807554535902,
+    "r_squared": 0.9979632171694474,
+    "fit_success": true,
+    "agreement_with_model": true,
+    "tolerance": 200
+  },
+  "partition": {
+    "rule": "N > N_star_hat => high_N, N <= N_star_hat => low_N",
+    "N_star_hat_used": 599.4724218356162,
+    "high_N_values": [
+      640,
+      768,
+      896,
+      1024,
+      1280,
+      1536,
+      2048
+    ],
+    "low_N_values": [
+      64,
+      128,
+      256,
+      384,
+      512
+    ]
+  },
+  "hypothesis_tests": {
+    "H1_phase_saturation": {
+      "confirmed": true,
+      "statistic": {
+        "drop_ratio": 0.17969543158676074,
+        "V_mean_below": 0.9028342576954752,
+        "V_mean_above": 0.16223519158790117,
+        "n_below": 300,
+        "n_above": 420
+      },
+      "ci95": {
+        "drop_ratio_low": 0.14833318696034478,
+        "drop_ratio_high": 0.2116206320095497
+      },
+      "threshold": 0.5,
+      "high_N_values_used": [
+        640,
+        768,
+        896,
+        1024,
+        1280,
+        1536,
+        2048
+      ],
+      "low_N_values_used": [
+        64,
+        128,
+        256,
+        384,
+        512
+      ],
+      "partition_rule": "N > N_star_hat => high_N, else low_N",
+      "notes": "Bootstrap 95% CI: [0.1483, 0.2116]"
+    },
+    "H2_eta_dependence": {
+      "confirmed": true,
+      "statistic": {
+        "slope": -0.1913246602155004
+      },
+      "ci95": {
+        "slope_low": -0.22077695517419735,
+        "slope_high": -0.16824217782009418
+      },
+      "threshold": -0.05,
+      "high_N_values_used": [
+        640,
+        768,
+        896,
+        1024,
+        1280,
+        1536,
+        2048
+      ],
+      "method": "OLS_demeaned_within_N",
+      "ci_method": "bootstrap_2000",
+      "notes": "Slope = -0.1913, 95% CI: [-0.2208, -0.1682]"
+    },
+    "H3_informational_nature": {
+      "confirmed": true,
+      "statistic": {
+        "cohens_d": 28.28170108853066,
+        "V_mean_eta0_all": 0.8433960263055892,
+        "V_min_eta0": 0.7405957118655861,
+        "V_mean_eta0_highN": 0.800940146741385,
+        "V_mean_eta1_highN": 0.007446254723246538
+      },
+      "ci95": {
+        "cohens_d_low": 25.12776609681923,
+        "cohens_d_high": 33.096623182957316
+      },
+      "thresholds": {
+        "d_min": 1.5,
+        "V_min": 0.7
+      },
+      "sub_tests": {
+        "H3a_effect_size": true,
+        "H3b_coherence_preserved": "True"
+      },
+      "high_N_values_used": [
+        640,
+        768,
+        896,
+        1024,
+        1280,
+        1536,
+        2048
+      ],
+      "notes": "Cohen's d = 28.28, CI: [25.13, 33.10]; V(η=0)_min = 0.741"
+    }
+  },
+  "complementarity": {
+    "complementarity_checked": true,
+    "max_violation": -0.00024590923447831425,
+    "n_violations": 0,
+    "n_total": 720,
+    "satisfied": true
+  },
+  "derived_metrics": {
+    "drop_ratio": 0.17969543158676074,
+    "eta_slope": -0.1913246602155004,
+    "cohens_d": 28.28170108853066
+  },
+  "target_spec": {
+    "hit": true,
+    "score": 1.0,
+    "thresholds": {
+      "drop_ratio_max": 0.5,
+      "eta_slope_max": -0.05,
+      "cohens_d_min": 1.5,
+      "N_star_tolerance": 200
+    },
+    "gating_metrics": [
+      "H1_drop_ratio",
+      "H2_eta_slope",
+      "H3_cohens_d",
+      "N_star_agreement"
+    ],
+    "recompute_contract": {
+      "H1_drop_ratio": {
+        "table": "tables/V_grid.parquet",
+        "columns_needed": [
+          "N",
+          "eta",
+          "V"
+        ],
+        "formula": "mean(V where N in high_N_values) / mean(V where N in low_N_values)",
+        "high_N_values": [
+          640,
+          768,
+          896,
+          1024,
+          1280,
+          1536,
+          2048
+        ],
+        "low_N_values": [
+          64,
+          128,
+          256,
+          384,
+          512
+        ],
+        "bootstrap": {
+          "method": "resample_both_groups",
+          "n_iterations": 2000,
+          "ci": 0.95,
+          "seed": 0
+        }
+      },
+      "H2_eta_slope": {
+        "table": "tables/V_summary.parquet",
+        "columns_needed": [
+          "N",
+          "eta",
+          "V_mean"
+        ],
+        "formula": "OLS: V_demeaned = b * eta, где V_demeaned = V_mean - mean(V_mean|N)",
+        "method": "demean_within_N_then_OLS_through_origin",
+        "high_N_values": [
+          640,
+          768,
+          896,
+          1024,
+          1280,
+          1536,
+          2048
+        ],
+        "bootstrap": {
+          "method": "resample_indices",
+          "n_iterations": 2000,
+          "ci": 0.95,
+          "seed": 0
+        }
+      },
+      "H3_cohens_d": {
+        "table": "tables/V_grid.parquet",
+        "columns_needed": [
+          "N",
+          "eta",
+          "V"
+        ],
+        "formula": "Cohen's d = (mean(V|eta=0) - mean(V|eta=1)) / pooled_std",
+        "pooled_std_formula": "sqrt(((n1-1)*s1^2 + (n2-1)*s2^2) / (n1+n2-2))",
+        "filter": "N in high_N_values",
+        "high_N_values": [
+          640,
+          768,
+          896,
+          1024,
+          1280,
+          1536,
+          2048
+        ],
+        "bootstrap": {
+          "method": "resample_both_groups",
+          "n_iterations": 2000,
+          "ci": 0.95,
+          "seed": 0
+        }
+      }
+    }
+  },
+  "conclusions": {
+    "main_result": "Phase saturation подтверждён: drop_ratio = 0.1797",
+    "N_star_from_data": "N*_hat = 599 (модель: 512)",
+    "agreement": "Согласие с моделью: ДА (±200)",
+    "complementarity": "Проверена: ДА"
+  },
+  "physical_interpretation": {
+    "rsl_hierarchy": "N*_model = 512 — размер базовой 1D-ячейки в RSL",
+    "phase_loss": "Фаза теряется при переходе между уровнями иерархии",
+    "measurement_role": "Π_meas операция извлекает which-path информацию",
+    "complementarity": {
+      "complementarity_checked": true,
+      "max_violation": -0.00024590923447831425,
+      "n_violations": 0,
+      "n_total": 720,
+      "satisfied": true
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "run_id": "eca449f7",
+  "created_at": "2025-12-19T20:29:24.435894",
+  "files": [
+    {
+      "name": "tables/pairs_eval.parquet",
+      "role": "ci_metric_input",
+      "sha256": "fe6cb80d9094c91ac737a5abc34b4badf239db8fdd800f2c72e548ce795d5347",
+      "n_rows": 299,
+      "format": "parquet"
+    },
+    {
+      "name": "tables/control_sweep.parquet",
+      "role": "ci_metric_input",
+      "sha256": "9f39fbdbec367aeb90e631d3357cc0b74f5df787666c9c54c17a4afafc19ac48",
+      "n_rows": 18,
+      "format": "parquet"
+    },
+    {
+      "name": "tables/Q_trace.csv",
+      "role": "ci_metric_input",
+      "sha256": "ea374cb7479a298b424ff129ac7bcaa2a3d85c632631e3e7dee51e92814284ce",
+      "n_rows": 11,
+      "format": "csv"
+    },
+    {
+      "name": "ftl_demonstration.png",
+      "role": "plot",
+      "sha256": "60578b1f35b7382d9f6c8e6481bb811abb5bf26712bffa5ab48f7399d7fd4572",
+      "format": "png"
+    },
+    {
+      "name": "path_distribution_analysis.png",
+      "role": "plot",
+      "sha256": "727545aae68f2c6b449fc0df38a9d2a7c76437adf8d5f96423b19c224fe513d4",
+      "format": "png"
+    },
+    {
+      "name": "control_sweep_monotonicity.png",
+      "role": "plot",
+      "sha256": "af17301a2dcf88a0cc9f3cb2db8201b321e3b4537ea2169cff7c7b27f671c202",
+      "format": "png"
+    }
+  ]
+}

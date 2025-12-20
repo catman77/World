@@ -1,0 +1,189 @@
+{
+  "experiment": "C",
+  "title": "FTL/Antigravity as Contextual Geometry Modes",
+  "timestamp": "20251219_193154",
+  "run_id": "961385cb",
+  "rsl_parameters": {
+    "N": 512,
+    "alpha": 2.0,
+    "L": 3,
+    "seed": 42
+  },
+  "trigger_parameters": {
+    "theta_xi": 0.6,
+    "theta_lambda": 0.7,
+    "tau_xi": 0.1,
+    "tau_lambda": 0.1,
+    "theta_T": 0.8,
+    "W": 10,
+    "eps_xi": 0.01
+  },
+  "wormhole_parameters": {
+    "d_min_graph": 5,
+    "r_max_3d": 2.0,
+    "max_wormholes": 15,
+    "lifetime_steps": 5
+  },
+  "world_stats": {
+    "N": 512,
+    "n_edges": 813,
+    "avg_degree": 3.17578125,
+    "mean_edge_length_3d": 0.030740886552843957
+  },
+  "hypothesis_results": {
+    "H1_path_shortening": {
+      "confirmed": true,
+      "avg_shortening_edges": 7.2,
+      "max_shortening_edges": 10,
+      "description": "FTL \u0440\u0435\u0430\u043b\u0438\u0437\u0443\u0435\u0442\u0441\u044f \u043a\u0430\u043a path-shortening \u0447\u0435\u0440\u0435\u0437 wormhole-\u0440\u0451\u0431\u0440\u0430"
+    },
+    "H2_controllability": {
+      "confirmed": false,
+      "trigger_params": {
+        "theta_xi": 0.6,
+        "theta_lambda": 0.7,
+        "theta_T": 0.8
+      },
+      "description": "\u042d\u0444\u0444\u0435\u043a\u0442 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u0438\u0440\u0443\u0435\u0442\u0441\u044f \u0447\u0435\u0440\u0435\u0437 Xi, \u03bb, device_mode"
+    },
+    "H3_baseline_compatibility": {
+      "confirmed": true,
+      "tests_passed": 3,
+      "tests_total": 3,
+      "description": "\u0412 context=0 \u043d\u0435\u0442 FTL-\u044d\u0444\u0444\u0435\u043a\u0442\u043e\u0432"
+    },
+    "H4_bimodal_distribution": {
+      "confirmed": true,
+      "pct_shortened": 30.150753768844222,
+      "ks_statistic": 0.03015075376884422,
+      "ks_pvalue": 0.9999915125602868,
+      "description": "\u0411\u0438\u043c\u043e\u0434\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u0432\u0440\u0435\u043c\u0451\u043d \u043f\u0440\u0438\u0431\u044b\u0442\u0438\u044f"
+    }
+  },
+  "statistical_analysis": {
+    "n_samples": 200,
+    "baseline_mean": 42.98994974874372,
+    "baseline_std": 25.313112567139402,
+    "ftl_mean": 42.38693467336683,
+    "ftl_std": 25.003437555639174,
+    "mean_reduction": 0.6030150753768879,
+    "ks_statistic": 0.03015075376884422,
+    "ks_pvalue": 0.9999915125602868,
+    "n_shortened": 60,
+    "pct_shortened": 30.150753768844222,
+    "h1_confirmed": true,
+    "h4_confirmed": true,
+    "wormhole_effects": [
+      {
+        "wormhole": [
+          430,
+          443
+        ],
+        "d_graph_orig": 6,
+        "d_3d": 0.09955300204724672,
+        "d_with_wh": 1,
+        "shortening": 5
+      },
+      {
+        "wormhole": [
+          323,
+          346
+        ],
+        "d_graph_orig": 10,
+        "d_3d": 0.23709189598073496,
+        "d_with_wh": 1,
+        "shortening": 9
+      },
+      {
+        "wormhole": [
+          334,
+          346
+        ],
+        "d_graph_orig": 7,
+        "d_3d": 0.11248688541687418,
+        "d_with_wh": 1,
+        "shortening": 6
+      },
+      {
+        "wormhole": [
+          322,
+          346
+        ],
+        "d_graph_orig": 10,
+        "d_3d": 0.23924695533229215,
+        "d_with_wh": 1,
+        "shortening": 9
+      },
+      {
+        "wormhole": [
+          331,
+          344
+        ],
+        "d_graph_orig": 7,
+        "d_3d": 0.13135966556603074,
+        "d_with_wh": 1,
+        "shortening": 6
+      },
+      {
+        "wormhole": [
+          75,
+          89
+        ],
+        "d_graph_orig": 8,
+        "d_3d": 0.16566626605721943,
+        "d_with_wh": 1,
+        "shortening": 7
+      },
+      {
+        "wormhole": [
+          324,
+          345
+        ],
+        "d_graph_orig": 10,
+        "d_3d": 0.22882319745071084,
+        "d_with_wh": 1,
+        "shortening": 9
+      },
+      {
+        "wormhole": [
+          174,
+          187
+        ],
+        "d_graph_orig": 6,
+        "d_3d": 0.049872754396154025,
+        "d_with_wh": 1,
+        "shortening": 5
+      },
+      {
+        "wormhole": [
+          325,
+          346
+        ],
+        "d_graph_orig": 11,
+        "d_3d": 0.22685733908428318,
+        "d_with_wh": 1,
+        "shortening": 10
+      },
+      {
+        "wormhole": [
+          332,
+          345
+        ],
+        "d_graph_orig": 7,
+        "d_3d": 0.11293574122086933,
+        "d_with_wh": 1,
+        "shortening": 6
+      }
+    ]
+  },
+  "summary": {
+    "hypotheses_confirmed": 3,
+    "hypotheses_total": 4,
+    "overall_score": 0.75,
+    "verdict": "PASS"
+  },
+  "artifacts": {
+    "ftl_demonstration_plot": "ftl_demonstration.png",
+    "path_distribution_plot": "path_distribution_analysis.png"
+  }
+}

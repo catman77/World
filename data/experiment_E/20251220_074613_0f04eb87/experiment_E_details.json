@@ -1,0 +1,562 @@
+{
+  "t5_results": [
+    {
+      "seed": 42,
+      "n_steps": 20,
+      "initial_match": true,
+      "final_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "passed": true
+    },
+    {
+      "seed": 43,
+      "n_steps": 20,
+      "initial_match": true,
+      "final_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "passed": true
+    },
+    {
+      "seed": 44,
+      "n_steps": 20,
+      "initial_match": true,
+      "final_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "passed": true
+    },
+    {
+      "seed": 45,
+      "n_steps": 20,
+      "initial_match": true,
+      "final_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "passed": true
+    },
+    {
+      "seed": 46,
+      "n_steps": 20,
+      "initial_match": true,
+      "final_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "passed": true
+    },
+    {
+      "seed": 47,
+      "n_steps": 20,
+      "initial_match": true,
+      "final_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "passed": true
+    },
+    {
+      "seed": 48,
+      "n_steps": 20,
+      "initial_match": true,
+      "final_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "passed": true
+    },
+    {
+      "seed": 49,
+      "n_steps": 20,
+      "initial_match": true,
+      "final_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "passed": true
+    },
+    {
+      "seed": 50,
+      "n_steps": 20,
+      "initial_match": true,
+      "final_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "passed": true
+    },
+    {
+      "seed": 51,
+      "n_steps": 20,
+      "initial_match": true,
+      "final_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "passed": true
+    }
+  ],
+  "t6_results": [
+    {
+      "seed": 42,
+      "n_steps": 10,
+      "n_records": 10,
+      "s_dims_ok": true,
+      "phi_dims_ok": true,
+      "time_monotonic": true,
+      "hash_chain_ok": true,
+      "positions_ok": true,
+      "passed": true
+    },
+    {
+      "seed": 43,
+      "n_steps": 10,
+      "n_records": 10,
+      "s_dims_ok": true,
+      "phi_dims_ok": true,
+      "time_monotonic": true,
+      "hash_chain_ok": true,
+      "positions_ok": true,
+      "passed": true
+    },
+    {
+      "seed": 44,
+      "n_steps": 10,
+      "n_records": 10,
+      "s_dims_ok": true,
+      "phi_dims_ok": true,
+      "time_monotonic": true,
+      "hash_chain_ok": true,
+      "positions_ok": true,
+      "passed": true
+    },
+    {
+      "seed": 45,
+      "n_steps": 10,
+      "n_records": 10,
+      "s_dims_ok": true,
+      "phi_dims_ok": true,
+      "time_monotonic": true,
+      "hash_chain_ok": true,
+      "positions_ok": true,
+      "passed": true
+    },
+    {
+      "seed": 46,
+      "n_steps": 10,
+      "n_records": 10,
+      "s_dims_ok": true,
+      "phi_dims_ok": true,
+      "time_monotonic": true,
+      "hash_chain_ok": true,
+      "positions_ok": true,
+      "passed": true
+    },
+    {
+      "seed": 47,
+      "n_steps": 10,
+      "n_records": 10,
+      "s_dims_ok": true,
+      "phi_dims_ok": true,
+      "time_monotonic": true,
+      "hash_chain_ok": true,
+      "positions_ok": true,
+      "passed": true
+    },
+    {
+      "seed": 48,
+      "n_steps": 10,
+      "n_records": 10,
+      "s_dims_ok": true,
+      "phi_dims_ok": true,
+      "time_monotonic": true,
+      "hash_chain_ok": true,
+      "positions_ok": true,
+      "passed": true
+    },
+    {
+      "seed": 49,
+      "n_steps": 10,
+      "n_records": 10,
+      "s_dims_ok": true,
+      "phi_dims_ok": true,
+      "time_monotonic": true,
+      "hash_chain_ok": true,
+      "positions_ok": true,
+      "passed": true
+    },
+    {
+      "seed": 50,
+      "n_steps": 10,
+      "n_records": 10,
+      "s_dims_ok": true,
+      "phi_dims_ok": true,
+      "time_monotonic": true,
+      "hash_chain_ok": true,
+      "positions_ok": true,
+      "passed": true
+    },
+    {
+      "seed": 51,
+      "n_steps": 10,
+      "n_records": 10,
+      "s_dims_ok": true,
+      "phi_dims_ok": true,
+      "time_monotonic": true,
+      "hash_chain_ok": true,
+      "positions_ok": true,
+      "passed": true
+    }
+  ],
+  "t7_results": [
+    {
+      "seed": 42,
+      "n_calls": 100,
+      "unique_hashes": 1,
+      "hash_sample": "f6ebb4449115d0fb",
+      "unique_spin_hashes": 1,
+      "unique_phi_hashes": 1,
+      "passed": true
+    },
+    {
+      "seed": 43,
+      "n_calls": 100,
+      "unique_hashes": 1,
+      "hash_sample": "b860dc6e9bc02b14",
+      "unique_spin_hashes": 1,
+      "unique_phi_hashes": 1,
+      "passed": true
+    },
+    {
+      "seed": 44,
+      "n_calls": 100,
+      "unique_hashes": 1,
+      "hash_sample": "c7207061d8223244",
+      "unique_spin_hashes": 1,
+      "unique_phi_hashes": 1,
+      "passed": true
+    },
+    {
+      "seed": 45,
+      "n_calls": 100,
+      "unique_hashes": 1,
+      "hash_sample": "b46f5a8ddbeb98de",
+      "unique_spin_hashes": 1,
+      "unique_phi_hashes": 1,
+      "passed": true
+    },
+    {
+      "seed": 46,
+      "n_calls": 100,
+      "unique_hashes": 1,
+      "hash_sample": "0b2dec609b6e04c9",
+      "unique_spin_hashes": 1,
+      "unique_phi_hashes": 1,
+      "passed": true
+    },
+    {
+      "seed": 47,
+      "n_calls": 100,
+      "unique_hashes": 1,
+      "hash_sample": "c302a9f7faf439e7",
+      "unique_spin_hashes": 1,
+      "unique_phi_hashes": 1,
+      "passed": true
+    },
+    {
+      "seed": 48,
+      "n_calls": 100,
+      "unique_hashes": 1,
+      "hash_sample": "760c20c38d44bec2",
+      "unique_spin_hashes": 1,
+      "unique_phi_hashes": 1,
+      "passed": true
+    },
+    {
+      "seed": 49,
+      "n_calls": 100,
+      "unique_hashes": 1,
+      "hash_sample": "d94e286d0b877968",
+      "unique_spin_hashes": 1,
+      "unique_phi_hashes": 1,
+      "passed": true
+    },
+    {
+      "seed": 50,
+      "n_calls": 100,
+      "unique_hashes": 1,
+      "hash_sample": "3640750810ddc85d",
+      "unique_spin_hashes": 1,
+      "unique_phi_hashes": 1,
+      "passed": true
+    },
+    {
+      "seed": 51,
+      "n_calls": 100,
+      "unique_hashes": 1,
+      "hash_sample": "b336b6e446092959",
+      "unique_spin_hashes": 1,
+      "unique_phi_hashes": 1,
+      "passed": true
+    }
+  ],
+  "r0_results": [
+    {
+      "seed": 42,
+      "T": 50,
+      "initial_hash": "f6ebb4449115d0fb",
+      "initial_spin_hash": "aa48064aa1ba453b",
+      "after_forward_hash": "db80ac910f474358",
+      "n_records": 50,
+      "final_hash": "f6ebb4449115d0fb",
+      "hash_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "t_match": true,
+      "passed": "True"
+    },
+    {
+      "seed": 43,
+      "T": 50,
+      "initial_hash": "b860dc6e9bc02b14",
+      "initial_spin_hash": "b15d3991b4b7715a",
+      "after_forward_hash": "b4ea8e38c1b8b306",
+      "n_records": 50,
+      "final_hash": "b860dc6e9bc02b14",
+      "hash_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "t_match": true,
+      "passed": "True"
+    },
+    {
+      "seed": 44,
+      "T": 50,
+      "initial_hash": "c7207061d8223244",
+      "initial_spin_hash": "b57043dc5b95affe",
+      "after_forward_hash": "e370527941283916",
+      "n_records": 50,
+      "final_hash": "c7207061d8223244",
+      "hash_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "t_match": true,
+      "passed": "True"
+    },
+    {
+      "seed": 45,
+      "T": 50,
+      "initial_hash": "b46f5a8ddbeb98de",
+      "initial_spin_hash": "4847746d726759fc",
+      "after_forward_hash": "0d381a780c9e56c9",
+      "n_records": 50,
+      "final_hash": "b46f5a8ddbeb98de",
+      "hash_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "t_match": true,
+      "passed": "True"
+    },
+    {
+      "seed": 46,
+      "T": 50,
+      "initial_hash": "0b2dec609b6e04c9",
+      "initial_spin_hash": "77e1294b24c9fe06",
+      "after_forward_hash": "612ef4fa8aa35fba",
+      "n_records": 50,
+      "final_hash": "0b2dec609b6e04c9",
+      "hash_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "t_match": true,
+      "passed": "True"
+    },
+    {
+      "seed": 47,
+      "T": 50,
+      "initial_hash": "c302a9f7faf439e7",
+      "initial_spin_hash": "2083fbcece92c959",
+      "after_forward_hash": "34a4018e216380eb",
+      "n_records": 50,
+      "final_hash": "c302a9f7faf439e7",
+      "hash_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "t_match": true,
+      "passed": "True"
+    },
+    {
+      "seed": 48,
+      "T": 50,
+      "initial_hash": "760c20c38d44bec2",
+      "initial_spin_hash": "9684d6897636099e",
+      "after_forward_hash": "cc81bbebae005927",
+      "n_records": 50,
+      "final_hash": "760c20c38d44bec2",
+      "hash_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "t_match": true,
+      "passed": "True"
+    },
+    {
+      "seed": 49,
+      "T": 50,
+      "initial_hash": "d94e286d0b877968",
+      "initial_spin_hash": "9b214d0c446b986a",
+      "after_forward_hash": "88f3b4970b044a2e",
+      "n_records": 50,
+      "final_hash": "d94e286d0b877968",
+      "hash_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "t_match": true,
+      "passed": "True"
+    },
+    {
+      "seed": 50,
+      "T": 50,
+      "initial_hash": "3640750810ddc85d",
+      "initial_spin_hash": "12ff9f1bed8ad9c5",
+      "after_forward_hash": "33b1f3ede33fa679",
+      "n_records": 50,
+      "final_hash": "3640750810ddc85d",
+      "hash_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "t_match": true,
+      "passed": "True"
+    },
+    {
+      "seed": 51,
+      "T": 50,
+      "initial_hash": "b336b6e446092959",
+      "initial_spin_hash": "44dc7f9ec083a698",
+      "after_forward_hash": "2fc265b471e44ccb",
+      "n_records": 50,
+      "final_hash": "b336b6e446092959",
+      "hash_match": true,
+      "spin_match": true,
+      "phi_max_diff": 0.0,
+      "t_match": true,
+      "passed": "True"
+    }
+  ],
+  "or_results": [
+    {
+      "seed": 42,
+      "history_len_before": 10,
+      "laws_before": 10,
+      "amnesia_world_unchanged": true,
+      "history_len_after_amnesia": 0,
+      "semantic_world_unchanged": true,
+      "laws_after_semantic": 0,
+      "spin_unchanged": true,
+      "phi_unchanged": true,
+      "passed": true
+    },
+    {
+      "seed": 43,
+      "history_len_before": 10,
+      "laws_before": 10,
+      "amnesia_world_unchanged": true,
+      "history_len_after_amnesia": 0,
+      "semantic_world_unchanged": true,
+      "laws_after_semantic": 0,
+      "spin_unchanged": true,
+      "phi_unchanged": true,
+      "passed": true
+    },
+    {
+      "seed": 44,
+      "history_len_before": 10,
+      "laws_before": 10,
+      "amnesia_world_unchanged": true,
+      "history_len_after_amnesia": 0,
+      "semantic_world_unchanged": true,
+      "laws_after_semantic": 0,
+      "spin_unchanged": true,
+      "phi_unchanged": true,
+      "passed": true
+    },
+    {
+      "seed": 45,
+      "history_len_before": 10,
+      "laws_before": 10,
+      "amnesia_world_unchanged": true,
+      "history_len_after_amnesia": 0,
+      "semantic_world_unchanged": true,
+      "laws_after_semantic": 0,
+      "spin_unchanged": true,
+      "phi_unchanged": true,
+      "passed": true
+    },
+    {
+      "seed": 46,
+      "history_len_before": 10,
+      "laws_before": 10,
+      "amnesia_world_unchanged": true,
+      "history_len_after_amnesia": 0,
+      "semantic_world_unchanged": true,
+      "laws_after_semantic": 0,
+      "spin_unchanged": true,
+      "phi_unchanged": true,
+      "passed": true
+    },
+    {
+      "seed": 47,
+      "history_len_before": 10,
+      "laws_before": 10,
+      "amnesia_world_unchanged": true,
+      "history_len_after_amnesia": 0,
+      "semantic_world_unchanged": true,
+      "laws_after_semantic": 0,
+      "spin_unchanged": true,
+      "phi_unchanged": true,
+      "passed": true
+    },
+    {
+      "seed": 48,
+      "history_len_before": 10,
+      "laws_before": 10,
+      "amnesia_world_unchanged": true,
+      "history_len_after_amnesia": 0,
+      "semantic_world_unchanged": true,
+      "laws_after_semantic": 0,
+      "spin_unchanged": true,
+      "phi_unchanged": true,
+      "passed": true
+    },
+    {
+      "seed": 49,
+      "history_len_before": 10,
+      "laws_before": 10,
+      "amnesia_world_unchanged": true,
+      "history_len_after_amnesia": 0,
+      "semantic_world_unchanged": true,
+      "laws_after_semantic": 0,
+      "spin_unchanged": true,
+      "phi_unchanged": true,
+      "passed": true
+    },
+    {
+      "seed": 50,
+      "history_len_before": 10,
+      "laws_before": 10,
+      "amnesia_world_unchanged": true,
+      "history_len_after_amnesia": 0,
+      "semantic_world_unchanged": true,
+      "laws_after_semantic": 0,
+      "spin_unchanged": true,
+      "phi_unchanged": true,
+      "passed": true
+    },
+    {
+      "seed": 51,
+      "history_len_before": 10,
+      "laws_before": 10,
+      "amnesia_world_unchanged": true,
+      "history_len_after_amnesia": 0,
+      "semantic_world_unchanged": true,
+      "laws_after_semantic": 0,
+      "spin_unchanged": true,
+      "phi_unchanged": true,
+      "passed": true
+    }
+  ]
+}

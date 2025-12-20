@@ -1,0 +1,89 @@
+{
+  "experiment": "E",
+  "name": "Time Travel & Reversibility",
+  "version": "1.0.0",
+  "run_id": "20251220_074613_0f04eb87",
+  "timestamp_utc": "2025-12-20T04:46:13.905903+00:00",
+  "git": {
+    "commit": "0f04eb87",
+    "dirty": false
+  },
+  "parameters": {
+    "RSL_N": 512,
+    "RSL_ALPHA": 2.0,
+    "RSL_L": 3,
+    "BASE_SEED": 42,
+    "T_FORWARD": 50,
+    "T_BACKWARD": 50,
+    "N_SEEDS": 10,
+    "PHI_QUANT_EPS": 1e-12
+  },
+  "thresholds": {
+    "h1_spin_match_rate": 1.0,
+    "h2_phi_max_diff": 1e-10,
+    "h3_hash_match": true,
+    "h4_world_unchanged": true,
+    "test5_determinism": true,
+    "test6_record_integrity": true,
+    "test7_hash_stability": true
+  },
+  "results": {
+    "tests": {
+      "T5_determinism": {
+        "passed": true,
+        "n_passed": 10,
+        "n_total": 10
+      },
+      "T6_steprecord": {
+        "passed": true,
+        "n_passed": 10,
+        "n_total": 10
+      },
+      "T7_hash_stability": {
+        "passed": true,
+        "n_passed": 10,
+        "n_total": 10
+      },
+      "R0_micro_reversibility": {
+        "passed": true,
+        "n_passed": 10,
+        "n_total": 10,
+        "max_phi_diff": 0.0
+      },
+      "OR_observer_reset": {
+        "passed": true,
+        "n_passed": 10,
+        "n_total": 10
+      }
+    },
+    "hypotheses": {
+      "H1": {
+        "name": "SM-правила обратимы",
+        "passed": true,
+        "evidence": "R0 test: 10/10 passed"
+      },
+      "H2": {
+        "name": "φ-поле обратимо при фикс. s",
+        "passed": true,
+        "evidence": "max phi_diff = 0.00e+00"
+      },
+      "H3": {
+        "name": "micro_hash сохраняется после rollback",
+        "passed": true,
+        "evidence": "hash_match: 10/10"
+      },
+      "H4": {
+        "name": "Observer reset не меняет физику",
+        "passed": true,
+        "evidence": "OR test: 10/10 passed"
+      }
+    },
+    "experiment_passed": true
+  },
+  "artifacts": {
+    "report_json": "/home/catman/Yandex.Disk/cuckoo/z/reals/libs/Experiments/Space/World/data/experiment_E/20251220_074613_0f04eb87/experiment_E_report.json",
+    "plots": [
+      "/home/catman/Yandex.Disk/cuckoo/z/reals/libs/Experiments/Space/World/data/experiment_E/20251220_074613_0f04eb87/plots/reversibility_visualization.png"
+    ]
+  }
+}
